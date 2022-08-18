@@ -88,7 +88,12 @@ nav {
 }
 
 .pagination {
-    margin: 1em;
+    /* margin: 1em; */
+    /* margin: 1em 2em 3em 4em;
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em; */
 }
 
 .pagination a {
@@ -116,10 +121,6 @@ embed {
 }
 
 @media only screen and (max-width:768px) {
-    header {
-        display: block;
-    }
-
     nav {
         display: flex;
         align-items: center;
@@ -133,6 +134,14 @@ embed {
     .contact {
         display: none;
     }
+
+    #main {
+        padding: 10em 4em;
+    }
+
+    .about-me {
+        display: none;
+    }
 }
 
 /* PRODUCTS */
@@ -142,11 +151,6 @@ embed {
 }
 
 .box {
-    background-color: var(--background);
-    display: grid;
-    /* grid-template-columns: 300px 200px 100px; */
-    align-items: center;
-    grid-gap: 50px;
     margin: 1em;
     padding: 2em;
     border-radius: 1em;
@@ -154,29 +158,48 @@ embed {
     color: var(--text-color);
 }
 
-.box img {
-    width: 200px;
-    height: 150px;
+.content {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.content img {
+    width: 400px;
+    height: 250px;
     border-radius: 10px;
 }
 
 .list {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
 }
 
-.list li {
+.list p {
     margin: 5px;
-    padding: 0.2rem;
+    padding: 1rem;
     border: 1px solid black;
     border-radius: 0.2rem;
     background-color: var(--primary-color);
+    align-self: center;
 }
 
 @media only screen and (max-width:768px) {
-    .list {
+    .content {
         flex-direction: column;
+    }
+
+    .content img {
+        width: 250px;
+        height: 150px;
+        padding-bottom: 1rem;
+    }
+
+    .list {
+        grid-template-columns: auto auto;
+    }
+
+    .list p {
+        padding: 0.5rem;
     }
 }
 
