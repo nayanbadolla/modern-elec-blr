@@ -63,7 +63,7 @@ nav {
 
 #main {
     padding: 15em;
-    background-image: url('M-bg.png');
+    background-image: url('./images/M-bg.png');
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -158,6 +158,7 @@ embed {
 .content {
     display: flex;
     justify-content: space-evenly;
+    padding: 1em;
 }
 
 .content img {
@@ -169,6 +170,9 @@ embed {
 .list {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; */
 }
 
 .list p {

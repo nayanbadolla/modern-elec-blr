@@ -1,3 +1,31 @@
+<?php
+    $conn=new mysqli("localhost","root","","modern-elec_contact");
+    if ($conn->connect_error)
+    {
+        die("Connection Failed: ".$conn->connect_error);
+    }
+
+
+if ($_GET) {
+    $sql="INSERT INTO `queries`(NAME, COMPANY) VALUES ("."'".$_GET['name']."','".$_GET['company']."')";
+    $result=$conn->query($sql);
+
+    $sql="SELECT * FROM queries";
+    $result=$conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row=$result->fetch_assoc()) {
+            echo "Name: ".$row["NAME"]."<br>";
+            echo "Company: ".$row["COMPANY"]."<br>";
+	    } 
+	}
+    
+	else {
+        echo "0 result";
+    }
+}
+    $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
