@@ -284,3 +284,8 @@ button {
 iframe {
     padding-bottom: 2em;
 }
+
+/* PHP */
+table {
+    background-color: grey;
+}

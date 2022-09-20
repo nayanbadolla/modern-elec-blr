@@ -14,8 +14,10 @@ if ($_GET) {
     $result=$conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row=$result->fetch_assoc()) {
-            echo "Name: ".$row["NAME"]."<br>";
-            echo "Company: ".$row["COMPANY"]."<br>";
+            // echo "Name: ".$row["NAME"]."<br>";
+            // echo "Company: ".$row["COMPANY"]."<br>";
+            echo "<table><tr><td>".$row["NAME"]."</td></tr></table";
+            echo "<table><tr><td>".$row["COMPANY"]."</td></tr></table";
 	    } 
 	}
     
@@ -36,6 +38,11 @@ if ($_GET) {
     <link rel="shortcut icon" type="image/x-icon" href="./favicon_io/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <title>Modern Electronics | Query?</title>
+    <!-- <style>
+        table {
+            background-color: grey;
+        }
+    </style> -->
 </head>
 <body>
     <header>
@@ -44,7 +51,7 @@ if ($_GET) {
             <a class="links" href="index.html">Home</a>
             <a class="links" href="products.html">Products</a>
             <a class="links" href="about.html">About Us</a>
-            <a class="links current" href="contact.html">Query?</a>
+            <a class="links current" href="query.php">Query?</a>
         </nav>
         <div class="contact">
             <a class="links" href="mailto:"><i class="fas fa-solid fa-envelope"></i> modern.electr@gmail.com</a>
