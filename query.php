@@ -1,33 +1,3 @@
-<?php
-    $conn=new mysqli("localhost","root","","modern-elec_contact");
-    if ($conn->connect_error)
-    {
-        die("Connection Failed: ".$conn->connect_error);
-    }
-
-
-if ($_GET) {
-    $sql="INSERT INTO `queries`(NAME, COMPANY) VALUES ("."'".$_GET['name']."','".$_GET['company']."')";
-    $result=$conn->query($sql);
-
-    $sql="SELECT * FROM queries";
-    $result=$conn->query($sql);
-    if ($result->num_rows > 0) {
-        while ($row=$result->fetch_assoc()) {
-            // echo "Name: ".$row["NAME"]."<br>";
-            // echo "Company: ".$row["COMPANY"]."<br>";
-            echo "<table><tr><td>".$row["NAME"]."</td></tr></table";
-            echo "<table><tr><td>".$row["COMPANY"]."</td></tr></table";
-	    } 
-	}
-    
-	else {
-        echo "0 result";
-    }
-}
-    $conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,11 +8,6 @@ if ($_GET) {
     <link rel="shortcut icon" type="image/x-icon" href="./favicon_io/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <title>Modern Electronics | Query?</title>
-    <!-- <style>
-        table {
-            background-color: grey;
-        }
-    </style> -->
 </head>
 <body>
     <header>
@@ -50,7 +15,7 @@ if ($_GET) {
         <nav>
             <a class="links" href="index.html">Home</a>
             <a class="links" href="products.html">Products</a>
-            <a class="links" href="about.html">About Us</a>
+            <!-- <a class="links about-me" href="about.html">About Us</a> -->
             <a class="links current" href="query.php">Query?</a>
         </nav>
         <div class="contact">
@@ -86,7 +51,60 @@ if ($_GET) {
         </form>
     </div>
 
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248839.05244870912!2d77.30278163281248!3d12.964800000000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15d890f91c45%3A0x55374acebe10e710!2sModern%20Electronics!5e0!3m2!1sen!2sin!4v1659258492069!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<?php
+    $conn=new mysqli("localhost","root","","modern-elec_contact");
+    if ($conn->connect_error) {
+        die("Connection Failed: ".$conn->connect_error);
+    }
+
+    if ($_GET) {
+        $sql="INSERT INTO `queries`(NAME, COMPANY) VALUES ("."'".$_GET['name']."','".$_GET['company']."')";
+        $result=$conn->query($sql);
+        
+        $sql="SELECT * FROM queries";
+        $result=$conn->query($sql);
+        
+        ?>
+
+    <div class="table">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Company</td>
+                <td>Status</td>
+            </tr>
+
+<?php
+        if ($result->num_rows > 0) {
+            while ($row=$result->fetch_assoc()) {
+?>
+
+<tr>
+    <td><?php echo $row["NAME"]; ?></td>
+    <td><?php echo $row["COMPANY"]; ?></td>
+    <td><a href="query.php?<?php echo "delID=".$row["NAME"]; ?>"> <i class="fas-solid fa-trash"></i></a></td>
+</tr>
+
+<?php
+	        } 
+	    }
+        
+        else {
+            echo "0 result";
+        }
+
+        if (isset($_GET['delID'])) {
+            $sql="DELETE FROM `queries` WHERE NAME='".$_GET['delID']."';";
+            $result=$conn->query($sql);
+        }
+    }
+    $conn->close(); 
+?>
+
+        </table>
+    </div>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248839.05244870912!2d77.30278163281248!3d12.964800000000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15d890f91c45%3A0x55374acebe10e710!2sModern%20Electronics!5e0!3m2!1sen!2sin!4v1659258492069!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="location"></iframe>
 
     <footer>
         <h4>All copyrights reserved. &copy;</h4>

@@ -105,16 +105,16 @@ nav {
     background-color: grey;
 }
 
+embed {
+    height: 20em;
+    width: 40em;
+}
+
 .marq {
     font-size: large;
     padding: 0.5em;
     background-color: var(--secondary-color);
     color: var(--text-color);
-}
-
-embed {
-    height: 20em;
-    width: 40em;
 }
 
 @media only screen and (max-width:768px) {
@@ -264,7 +264,7 @@ embed {
 /* QUERY */
 
 .contact {
-    padding: 2em;
+    padding-top: 2em;
 }
 
 #form {
@@ -272,6 +272,15 @@ embed {
     padding: 2em;
     background-color: var(--secondary-color);
     color: var(--text-color);
+}
+
+label {
+    font-size: large;
+}
+
+input, textarea {
+    padding: 0.3em;
+    font-size: 14px;
 }
 
 button {
@@ -282,10 +291,34 @@ button {
 }
 
 iframe {
+    width: 60%;
+    height: 30em;
+    border: 0;
+    padding-top: 1em;
+}
+
+.location {
     padding-bottom: 2em;
 }
 
+.footer {
+    height: 12em;
+    width: 100%;
+    /* height: auto; */
+}
+
 /* PHP */
-table {
-    background-color: grey;
+
+table, tr, td {
+    border: 2px solid black;
+}
+
+.table {
+    /* margin: 2em 0; */
+    max-width: max-content;
+    margin: 2em auto;
+}
+
+td {
+    padding: 10px;
 }
